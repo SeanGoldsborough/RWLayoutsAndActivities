@@ -3,12 +3,16 @@ package com.example.rwlayouts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
+    private val TAG = MainActivity::class.java.simpleName
     private lateinit var gameScoreTextView: TextView
     private lateinit var timeLeftTextView: TextView
     private lateinit var tapMeButton: Button
@@ -24,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Log.d(TAG, "onCreate was called. Score is $score")
+
         gameScoreTextView = findViewById(R.id.score_text_view)
         timeLeftTextView = findViewById(R.id.time_text_view)
         tapMeButton = findViewById(R.id.tap_me_button)
@@ -31,6 +37,14 @@ class MainActivity : AppCompatActivity() {
         tapMeButton.setOnClickListener { incrementScore() }
         resetGame()
     }
+
+//    val fab: View = findViewById(R.id.floatingActionButton)
+//    fab.setOnClickListener { view ->
+//        Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+//            .setAction("Action", null)
+//            .show()
+//        //Toast.makeText(this, getString(R.string.game_over_message, score), Toast.LENGTH_LONG).show()
+//    }
 
     private fun incrementScore() {
         score++
